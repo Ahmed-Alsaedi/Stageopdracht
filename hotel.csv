@@ -1,0 +1,196 @@
+1;AMS;AMS01;Ibis Amsterdam Airport
+2;AMS;AMS02;Novotel Amsterdam Airport
+3;ANT;ANT01;Express by Holiday Inn
+4;ANT;ANT02;Eden
+5;ANT;ANT04;Astoria
+6;ANT;ANT05;Golden Tulip Antwerp Centre
+7;ANT;ANT06;Residence
+8;ANT;ANT07;Carlton
+9;ANT;ANT08;Park Plaza Astrid Antwerp
+10;ANT;ANT09;Antwerp Diamond
+11;ANT;ANT10;Ramada Plaza
+12;ANT;ANT11;Agora
+13;ANT;ANT12;Radisson SAS Park Lane
+14;ANT;ANT13;Tourist
+15;ANT;ANT14;Ibis Antwerpen Centrum
+16;ANT;ANT77;Carlton
+17;ANT;ANT78;Astoria
+18;ANT;ANT79;Carlton
+19;ANT;ANT89;Express by Holiday Inn
+20;ANT;ANT90;Ramada Plaza
+21;ANT;ANT92;Express by Holiday Inn
+22;ANT;ANT93;Carlton
+23;ANT;ANT94;Corinthia Antwerp
+24;ANT;ANT95;Corinthia Antwerp
+25;ANT;ANT96;Express by Holiday Inn
+26;ANT;ANT97;Astoria
+27;ANT;ANT98;Express by Holiday Inn
+28;ANT;ANT99;Express by Holiday Inn
+29;ATH;ATH01;Evripides
+30;ATH;ATH02;Amaryllis
+31;ATH;ATH03;Amaryllis Inn
+32;ATH;ATH04;Apollo
+33;ATH;ATH05;Esperia Palace
+34;ATH;ATH06;Fresh
+35;ATH;ATH07;Dorian Inn
+36;ATH;ATH08;Candia
+37;ATH;ATH10;Stanley
+38;ATH;ATH14;St. George Lycabettus
+39;BAK;BAK20;Narai
+40;BAK;BAK21;Windsor Suites
+41;BAK;BAK22;Swissotel Nai Lert Park Bangkok
+42;BAK;BAK23;Holiday Inn Silom
+43;BAK;BAK24;Triple Two Silom (222)
+44;BAK;BAK25;Millennium Hilton Bangkok
+45;BAK;BAK31;Windsor Suites
+46;BAK;BAK70;Narai
+47;BAK;BAK71;Windsor Suites
+48;BAK;BAK72;Swissotel Nai Lert Park Bangkok
+49;BAK;BAK73;Holiday Inn Silom
+50;BAK;BAK74;Triple Two Silom (222)
+51;BAK;BAK75;Millennium Hilton Bangkok
+52;BAK;BAK81;Windsor Suites
+53;BAR;BAR01;Rialto
+54;BAR;BAR02;Adagio
+55;BAR;BAR03;Comercio
+56;BAR;BAR04;AutoHogar
+57;BAR;BAR05;Arc la Rambla
+58;BAR;BAR06;Catalonia Aragon
+59;BAR;BAR07;Borne
+60;BAR;BAR08;Santa Marta
+61;BAR;BAR09;Expo
+62;BAR;BAR10;Junior
+63;BAR;BAR11;Amrey Diagonal
+64;BAR;BAR12;Principal
+65;BAR;BAR13;AB Viladomat
+66;BAR;BAR14;Front Maritim
+67;BAR;BAR15;Citypark Nicaragua
+68;BAR;BAR16;Catalonia Atenas
+69;BAR;BAR17;Rege
+70;BAR;BAR18;Decimononico/Pescateria
+71;BAR;BAR19;Silken Concordia
+72;BAR;BAR20;Gutenberg
+73;BAR;BAR21;Catalonia Princesa
+74;BAR;BAR22;Santa Monica
+75;BAR;BAR23;Catalunya
+76;BAR;BAR24;Medium Monegal
+77;BAR;BAR25;Hesperia Metropol
+78;BAR;BAR26;Torre Catalunya
+79;BAR;BAR27;Sagrada Familia
+80;BAR;BAR28;Del Comte
+81;BAR;BAR29;Citypark Pelayo
+82;BAR;BAR30;Habitat Sky
+83;BAR;BAR31;Amister
+84;BAR;BAR32;Acevi Villarroel
+85;BAR;BAR33;Calabria
+86;BAR;BAR34;Rialto
+87;BAR;BAR35;Ramblas
+88;BAR;BAR36;Suizo
+89;BAR;BAR37;Principal
+90;BAR;BAR38;H10 Marina Barcelona
+91;BAR;BAR39;Catalonia Berna
+92;BAR;BAR40;America
+93;BAR;BAR41;Icaria
+94;BAR;BAR42;Park
+95;BAR;BAR43;Sansi Diputacio
+96;BAR;BAR44;Condestable
+97;BAR;BAR45;Confortel Almirante
+98;BAR;BAR46;Barcelona Princess
+99;BAR;BAR47;Catal. Duques de Bergara
+100;BAR;BAR48;Grupotel Gravina
+101;BAR;BAR49;Axel
+102;BAR;BAR50;Avenida Palace
+103;BAR;BAR51;Rivoli Ramblas
+104;BAR;BAR52;1898
+105;BAR;BAR53;Casa Fuster
+106;BAR;BAR54;Adagio
+107;BAR;BAR55;Comercio
+108;BAR;BAR56;Catalonia Aragon
+109;BAR;BAR57;Santa Marta
+110;BAR;BAR58;Napols
+111;BAR;BAR59;Catalonia Atenas
+112;BAR;BAR60;Catalonia Princesa
+113;BAR;BAR61;Rialto
+114;BAR;BAR62;Ramblas
+115;BAR;BAR63;Catalonia Berna
+116;BAR;BAR64;Cristal Palace
+117;BAR;BAR65;Grand Marina
+118;BAR;BAR66;AB Skipper
+119;BAR;BAR67;Abrevadero
+120;BAR;BAR68;Transit
+121;BAR;BAR69;Barcelona Ramblas
+122;BAR;BAR70;Glories
+123;BAR;BAR71;Avinyo
+124;BAR;BAR72;California
+125;BAR;BAR73;Guardia
+126;BAR;BAR74;Del Mar
+127;BAR;BAR75;Tryp Apolo
+128;BAR;BAR76;H10 Montcada
+129;BAR;BAR77;Gotico
+130;BAR;BAR78;Gran Barcino
+131;BAR;BAR79;Condes de Barcelona
+132;BAR;BAR80;Corders
+133;BAR;BAR81;Tiradors
+134;BAR;BAR82;Confortel Auditori
+135;BAR;BAR83;Gran Ronda
+136;BAR;BAR84;Catalonia Ramblas
+137;BAR;BAR85;Catalonia Albinoni
+138;BAR;BAR86;Expo
+139;BAR;BAR87;Calabria
+140;BAR;BAR88;Almirante Confortel
+141;BAR;BAR89;Evenia Rocafort
+142;BAR;BAR90;Avinyo
+143;BAR;BAR91;Espana
+144;BAR;BAR92;Marina
+145;BAR;BAR93;Amrey Sant Pau
+146;BAR;BAR94;Barcelona Center
+147;BAR;BAR95;Lami
+148;BAR;BAR96;Ciutat de Barcelona
+149;BAR;BAR97;Bel Art
+150;BAR;BAR98;Barcelona Catedral
+151;BAR;BAR99;Aston
+152;BAR;BARA1;Nouvel
+153;BAR;BARA2;Lleo
+154;BAR;BARA3;Santa Marta
+155;BAR;BARA4;Avinyo
+156;BAR;BARA5;Rialto
+157;BAR;BARA6;H10 Universitat
+158;BAR;BARA7;Del Mar
+159;BAR;BARA8;Majestic
+160;BAR;BARA9;H10 Raco del Pi
+161;BAR;BARB1;NH Duc de la Victoria
+162;BAR;BARB2;Colon
+163;BAR;BARB3;Arago 565
+164;BAR;BARB4;Ramblas
+165;BAR;BARB5;NH Les Corts
+166;BAR;BARB6;Confortel Barcelona
+167;BAR;BARB7;AB Viladomat
+168;BAR;BARB8;Residencia Erasmus Gracia
+169;BAR;BARB9;Petit Palace Museum
+170;BAR;BARC7;FC Barcelona-Real in 3*
+171;BER;BER01;Quality City-East
+172;BER;BER02;Bogota
+173;BER;BER03;Agon Opera am Kurfürstendamm
+174;BER;BER04;Comfort Weissensee
+175;BER;BER05;Comfort Lichtenberg
+176;BER;BER06;City Amaryl
+177;BER;BER07;Park Inn Alexanderplatz
+178;BER;BER08;Novotel Dorint am Tiergarten
+179;BER;BER09;Best Western Berlin Mitte
+180;BER;BER10;Berlin Mark
+181;BER;BER11;Sorat Ambassador
+182;BER;BER12;Panorama
+183;BER;BER13;Melia Berlin
+184;BER;BER14;Art'Otel Kudamm
+185;BER;BER15;Lindenberger Hof
+186;BER;BER16;Ramada Plaza
+187;BER;BER17;Innside Premium
+188;BER;BER18;Metropolitan Hansa
+189;BER;BER19;Ellington
+190;BER;BER20;Winter's Berlin
+191;BER;BER21;Estrel
+192;BER;BER22;Citadines
+193;BER;BER23;Villa Kastania
+194;BER;BER24;Domicil
+195;BER;BER25;Holiday Inn Berlin City East
+196;BER;BER26;Winter's Berlin
