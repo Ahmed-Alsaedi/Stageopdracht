@@ -1,5 +1,33 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Search">
-</form>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<div class="jumbotron">
+    <h1 class="text-center display-4">Find a hotel</h1>
+</div>
+
+
+<div class="container">
+    <form id="run_command" method="post" action="{% url 'run_command' %}">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Update cities and hotel database">
+    </form>
+    {%if status%}
+    <h2>{{ status }}</h2>
+    {% endif %}
+    <div class="row">
+        <form class="col-md-6">
+            <label for="id_city">Select a city:</label>
+            <select id="id_city" name="city" class="form-control">
+                <option value=""></option>
+                {% for city in cities %}
+                <option value="{{ city.id }}">{{ city.name }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <div class="col-md-6">
+            <ul id="hotels-list"></ul>
+        </div>
+    </div>
+   
+</div>
