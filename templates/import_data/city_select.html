@@ -31,3 +31,58 @@
     </div>
    
 </div>
+
+
+
+<div id="hotels-list">
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#id_city').change(function(){
+            var city_id = $(this).val();
+            $.ajax({
+                url: '/get_hotels/',
+                data: {
+                    'city_id': city_id
+                },
+                dataType: 'json',
+                
+                success: function (data) {
+                    var hotels_list = document.getElementById('hotels-list');
+                    hotels_list.classList.add('table-responsive');
+                    var table = document.createElement('table');
+                    table.classList.add('table', 'table-striped');
+                    var hotels = data.hotels;
+
+                    // Create the table header
+                    var headerRow = table.insertRow(-1);
+                    headerRow.classList.add('thead-dark');
+
+                    var columnNameHeaderCell = headerRow.insertCell(-1);
+                    columnNameHeaderCell.classList.add('text-center');
+                    var columnNameBold = document.createElement('b');
+                    columnNameBold.textContent = 'Hotel Name';
+                    columnNameHeaderCell.appendChild(columnNameBold);
+
+                    // Insert the data into the table
+                    for (var i = 0; i < hotels.length; i++) {
+                        var hotel = hotels[i];
+                        var row = table.insertRow(-1);
+                        var nameCell = row.insertCell(-1);
+                        nameCell.textContent = hotel.name;
+                    }
+                    hotels_list.innerHTML = '';
+                    hotels_list.appendChild(table);
+                }
+            });
+        });
+    });
+</script>
