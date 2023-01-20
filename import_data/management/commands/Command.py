@@ -12,7 +12,7 @@ class Command(BaseCommand):
     
     def handle(self,*args, **options):
         """Handle method needs to be called handle, otherwise Command doesn't work.
-        Uses requests libary to authenticate itself and pass the responses to the corresponding
+        Users requests libary to authenticate itself and pass the responses to the corresponding
         methods"""
         
         city_url = "http://rachel.maykinmedia.nl/djangocase/city.csv"
