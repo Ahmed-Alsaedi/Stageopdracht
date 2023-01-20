@@ -24,7 +24,8 @@ class Command(BaseCommand):
         hotel_response = requests.get(hotel_url, auth=(username, password))
 
         if city_response.status_code != 200 or city_response.status_code != 200: # Make sure the request was successful
-            return HttpResponse("Error in the city webstite (No 200 status code)")
+            print("No 200 status code returned... exiting")
+            return
         
         self.city_db_update(city_response)
         self.hotel_db_update(hotel_response)
