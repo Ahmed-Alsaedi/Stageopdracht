@@ -23,7 +23,7 @@ class Command(BaseCommand):
         city_response = requests.get(city_url, auth=(username, password))
         hotel_response = requests.get(hotel_url, auth=(username, password))
 
-        if city_response.status_code != 200 or city_response.status_code != 200: # Make sure the request was successful
+        if city_response.status_code != 200 or hotel_response.status_code != 200: # Make sure the request was successful
             print("No 200 status code returned... exiting")
             return
         

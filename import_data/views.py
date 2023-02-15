@@ -26,3 +26,6 @@ def get_hotels(request):
     hotels = Hotel.objects.filter(city=city_id)
     data = {'hotels': list(hotels.values())}
     return JsonResponse(data)
+
+def rooms_view(request):
+    return render(request, 'import_data/rooms.html')

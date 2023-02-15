@@ -1,0 +1,40 @@
+<html lang="en">
+   <head>
+    {% load static %}
+      <!-- style css -->
+      <link rel="stylesheet" href="static/import_data/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="static/import_data/responsive.css">
+    </head>
+    <body>
+        {% block content %}
+            <div class="our_room">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="titlepage">
+                                <p class="margin_0">Our rooms</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for room in rooms %}
+                        <div class="col-md-4 col-sm-6">
+                            <div id="serv_hover" class="room">
+                                <div class="room_img">
+                                    <figure><img src="image.png" alt="{{ room.name }}"/></figure>
+                                </div>
+                                <div class="bed_room">
+                                    <h3>{{ room.name }}</h3>
+                                    <p>{{ room.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </body>
+</html>
+

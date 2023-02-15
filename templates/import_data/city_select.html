@@ -10,7 +10,7 @@
 <div class="container">
     <form id="run_command" method="post" action="{% url 'run_command' %}">
         {% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="Update cities and hotel database">
+        <input type="submit" class="btn btn-primary" value="Update">
     </form>
     {%if status%}
     <h2>{{ status }}</h2>
