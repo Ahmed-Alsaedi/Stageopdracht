@@ -45,44 +45,54 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function(){
-        $('#id_city').change(function(){
-            var city_id = $(this).val();
-            $.ajax({
-                url: '/get_hotels/',
-                data: {
-                    'city_id': city_id
-                },
-                dataType: 'json',
+$(document).ready(function(){
+    $('#id_city').change(function(){
+        var city_id = $(this).val();
+        $.ajax({
+            url: '/get_hotels/',
+            data: {
+                'city_id': city_id
+            },
+            dataType: 'json',
+            
+            success: function (data) {
+                var hotels_list = document.getElementById('hotels-list');
+                hotels_list.classList.add('row');
                 
-                success: function (data) {
-                    var hotels_list = document.getElementById('hotels-list');
-                    hotels_list.classList.add('table-responsive');
-                    var table = document.createElement('table');
-                    table.classList.add('table', 'table-striped');
-                    var hotels = data.hotels;
+                var hotels = data.hotels;
 
-                    // Create the table header
-                    var headerRow = table.insertRow(-1);
-                    headerRow.classList.add('thead-dark');
+                // Insert the data into the table
+                for (var i = 0; i < hotels.length; i++) {
+                    var hotel = hotels[i];
 
-                    var columnNameHeaderCell = headerRow.insertCell(-1);
-                    columnNameHeaderCell.classList.add('text-center');
-                    var columnNameBold = document.createElement('b');
-                    columnNameBold.textContent = 'Hotel Name';
-                    columnNameHeaderCell.appendChild(columnNameBold);
+                    // create a div to hold each hotel's info
+                    var hotelDiv = document.createElement('div');
+                    hotelDiv.classList.add('col-lg-4', 'col-md-6', 'mb-4');
+                    hotels_list.appendChild(hotelDiv);
 
-                    // Insert the data into the table
-                    for (var i = 0; i < hotels.length; i++) {
-                        var hotel = hotels[i];
-                        var row = table.insertRow(-1);
-                        var nameCell = row.insertCell(-1);
-                        nameCell.textContent = hotel.name;
-                    }
-                    hotels_list.innerHTML = '';
-                    hotels_list.appendChild(table);
+                    // create the image element
+                    var image = document.createElement('img');
+                    image.src = hotel.image_url;
+                    image.classList.add('img-fluid');
+                    hotelDiv.appendChild(image);
+
+                    // create the name element
+                    var name = document.createElement('h4');
+                    name.textContent = hotel.name;
+                    hotelDiv.appendChild(name);
+
+                    // create the description element
+                    var description = document.createElement('p');
+                    description.textContent = hotel.description;
+                    hotelDiv.appendChild(description);
+
+                    // create the price element
+                    var price = document.createElement('p');
+                    price.textContent = 'Price: ' + hotel.price;
+                    hotelDiv.appendChild(price);
                 }
-            });
+            }
         });
     });
+});
 </script>
