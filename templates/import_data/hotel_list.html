@@ -1,6 +1,56 @@
-<h1>Hotels in {{ city.name }}</h1>
-<ul>
-    {% for hotel in hotels %}
-        <li>{{ hotel.name }}</li>
-    {% endfor %}
-</ul>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for hotel in hotels %}
+                <div class="col-sm-4">
+                    <div class="card mb-3">
+                        <img src="{% static 'images/image-cap.svg' %}" class="card-img-top" alt="{{ hotel.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ hotel.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ hotel.city.name }}</h6>
+                            <p class="card-text">Hotel number: {{ hotel.hotelNr }}</p>
+                            <a href="{% url 'room_list' hotel.id %}" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if hotels.has_previous or hotels.has_next %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    {% if hotels.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ hotels.previous_page_number }}{% if selected_city_name %}&city={{ selected_city_name }}{% endif %}" tabindex="-1">Previous</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {% for page_num in hotels.paginator.page_range %}
+                        {% if page_num == hotels.number %}
+                            <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_num }}{% if selected_city_name %}&city={{ selected_city_name }}{% endif %}">{{ page_num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if hotels.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ hotels.next_page_number }}{% if selected_city_name %}&city={{ selected_city_name }}{% endif %}">Next</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-disabled="true">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
+{% endblock %}
