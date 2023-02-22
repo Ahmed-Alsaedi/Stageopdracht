@@ -4,22 +4,29 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
+        <div class="card mb-6">
         <h2>{{ hotel.name }}</h2>
         <p>{{ hotel.description }}</p>
+        </div>
       </div>
       <div class="col-md-6">
-        <img src="{{ hotel.photo.url }}" alt="{{ hotel.name }}" class="img-fluid">
+        <div class="card mb-6">
+        <img src="{{ hotel.photo }}" alt="{{ hotel.name }}" class="img-fluid">
+        <div class="card-body">
+          <h5 class="card-title">{{ hotel.name }}</h5>
+        </div>
+        </div>
       </div>
     </div>
     <div class="row">
       {% for room in rooms %}
         <div class="col-md-4">
           <div class="card mb-4">
-            <img src="{{ room.photo.url }}" alt="{{ room.name }}" class="card-img-top">
+            <img src="{{ room.photo }}" alt="{{ room.name }}" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">{{ room.name }}</h5>
               <p class="card-text">{{ room.description }}</p>
-              <a href="#" class="btn btn-primary">Book now for $1200</a> <!--{{room.price}}-->
+              <a href="#" class="btn btn-primary">Book now for ${{room.price}}</a> 
             </div>
           </div>
         </div>

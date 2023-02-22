@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ hotel.name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ hotel.city.name }}</h6>
-                            <p class="card-text">Hotel number: {{ hotel.hotelNr }}</p>
+                            <p class="card-text">Hotel number: {{ hotel.hotel_number }}</p>
                             <a href="{% url 'room_list' hotel.id %}" class="btn btn-primary">Book Now</a>
                         </div>
                     </div>
