@@ -1,6 +1,6 @@
 from audioop import reverse
 from django.shortcuts import render
-from .models import City, Hotel, Room
+from .models import City, Hotel, Room, Reservation
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.core.management import call_command
@@ -61,11 +61,18 @@ def room_list(request, hotel_id):
     context = {'hotel': hotel, 'rooms': rooms}
     return render(request, 'import_data/room_list.html', context)
 
+def reservation(request, room_id, hotel_id):
+    hotel = Hotel.objects.get(id=hotel_id)
+    room = Room.objects.get(id=room_id)
+    context = {'room': room, 'hotel': hotel}
+    return render(request, 'import_data/reservation.html', context)
 
-
-
-
-
+def confirm_reservation(request, room_id, hotel_id, reservation_id):
+    hotel = Hotel.objects.get(id=hotel_id)
+    room = Room.objects.get(id=room_id)
+    reservation= Reservation.objects.get(id=reservation_id)
+    context = {'room': room, 'hotel': hotel, 'reservation': reservation}
+    return render(request, 'import_data/confirm_reservation.html', context)
 
 
 # def get_hotels(request):
@@ -75,5 +82,5 @@ def room_list(request, hotel_id):
 #     data = {'hotels': list(hotels.values())}
 #     return JsonResponse(data)
 
-# def rooms_view(request):
+# def rooms_vie(request):
 #     return render(request, 'import_data/rooms.html')

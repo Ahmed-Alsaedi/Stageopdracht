@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1> Order your stay at {{hotel.name}}</h1>
+  <br>
+  <br>
+  <h3>Reservation</h3>
+  {% csrf_token %}
+  <label for="rooms">Select a room:</label>
+  <label value="{{ room.id }}">{{ room.name }}</label>
+  <br><br>
+  <label for="checkin">Check-in date:</label>
+  <input type="date" name="checkin" id="checkin">
+  <br><br>
+  <label for="checkout">Check-out date:</label>
+  <input type="date" name="checkout" id="checkout">
+  <br><br>
+  <a href="#" class="btn btn-primary">Continue</a>
+{% endblock %}

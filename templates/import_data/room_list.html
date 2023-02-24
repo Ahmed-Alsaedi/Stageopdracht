@@ -26,7 +26,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ room.name }}</h5>
               <p class="card-text">{{ room.description }}</p>
-              <a href="#" class="btn btn-primary">Book now for ${{room.price}}</a> 
+              <a href="{% url 'reservation' hotel_id=room.hotel.id room_id=room.id %}" class="btn btn-primary">Book now for ${{room.price}}</a>
             </div>
           </div>
         </div>

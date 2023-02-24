@@ -22,6 +22,7 @@ class Room(models.Model):
     photo = models.ImageField(upload_to='import_data/room_photos/', default="Media/coming_soon.avif")
     description=models.TextField(default="")
     price = models.IntegerField(default=0)
+    #availability = models.BooleanField(default=True)
 
 class Reservation(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
