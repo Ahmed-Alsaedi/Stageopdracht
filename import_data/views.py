@@ -1,10 +1,11 @@
 from audioop import reverse
 from django.shortcuts import render
-from .models import City, Hotel, Room, Reservation
+from .models import City, Hotel, Room, Reservation, User
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.core.management import call_command
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .forms import Reservation, User
 
 # def update(request):
 #     """Updates cities and hotels, this is normally done via Command.py as cronjob.
@@ -12,9 +13,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 #     if request.method == 'POST':
 #         call_command('Command')
 #     return redirect('/')
-
-
-
 
 def hotel_list(request):
     # Retrieve the selected city name from the query parameter
@@ -34,11 +32,6 @@ def hotel_list(request):
 
     # Render a template that displays the list of hotels
     return render(request, 'import_data/hotel_list.html', {'hotels': page_obj, 'selected_city_name': selected_city_name})
-
-
-
-
-
 
 def select_city(request):
     if request.method == 'POST':
@@ -67,9 +60,10 @@ def reservation(request, room_id, hotel_id):
     context = {'room': room, 'hotel': hotel}
     return render(request, 'import_data/reservation.html', context)
 
-def confirm_reservation(request, room_id, hotel_id, reservation_id):
+def confirm_reservation(request, user_id, room_id, hotel_id, reservation_id):
+    user = User.objects.get(id=user_id)
     hotel = Hotel.objects.get(id=hotel_id)
     room = Room.objects.get(id=room_id)
     reservation= Reservation.objects.get(id=reservation_id)
-    context = {'room': room, 'hotel': hotel, 'reservation': reservation}
+    context = {'room': room, 'hotel': hotel, 'reservation': reservation, 'user': user}
     return render(request, 'import_data/confirm_reservation.html', context)
