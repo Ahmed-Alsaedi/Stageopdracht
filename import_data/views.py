@@ -73,14 +73,3 @@ def confirm_reservation(request, room_id, hotel_id, reservation_id):
     reservation= Reservation.objects.get(id=reservation_id)
     context = {'room': room, 'hotel': hotel, 'reservation': reservation}
     return render(request, 'import_data/confirm_reservation.html', context)
-
-
-# def get_hotels(request):
-#     """Returns json data of the corresponding hotels for a city"""
-#     city_id = request.GET.get('city_id')
-#     hotels = Hotel.objects.filter(city=city_id)
-#     data = {'hotels': list(hotels.values())}
-#     return JsonResponse(data)
-
-# def rooms_vie(request):
-#     return render(request, 'import_data/rooms.html')
