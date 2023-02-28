@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.core.management import call_command
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import Reservation, User
+# from .forms import Reservation, User
 
 # def update(request):
 #     """Updates cities and hotels, this is normally done via Command.py as cronjob.
