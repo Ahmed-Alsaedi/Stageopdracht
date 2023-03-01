@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.core.management import call_command
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-# from .forms import Reservation, User
+from .forms import ReservationForm
 
 # def update(request):
 #     """Updates cities and hotels, this is normally done via Command.py as cronjob.
@@ -57,7 +57,18 @@ def room_list(request, hotel_id):
 def reservation(request, room_id, hotel_id):
     hotel = Hotel.objects.get(id=hotel_id)
     room = Room.objects.get(id=room_id)
-    context = {'room': room, 'hotel': hotel}
+
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save(commit=False)
+            reservation.room = room
+            reservation.save()
+            return redirect('confirm_reservation', reservation_id=reservation.id)
+    else:
+        form = ReservationForm()
+
+    context = {'room': room, 'hotel': hotel, 'form': form}
     return render(request, 'import_data/reservation.html', context)
 
 def confirm_reservation(request, user_id, room_id, hotel_id, reservation_id):

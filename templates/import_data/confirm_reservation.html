@@ -2,30 +2,30 @@
 
 {% block content %}
   <h1>Confirmation</h1>
-  <form method="post" action="{% url 'confirm_reservation' %}">
+  <form method="post">
     {% csrf_token %}
-    <input type="hidden" name="room" value="{{ reservation.room.id }}">
-    <input type="hidden" name="checkin" value="{{ reservation.checkin }}">
-    <input type="hidden" name="checkout" value="{{ reservation.checkout }}">
+    <input type="hidden" name="room" value="{{ reservation.id }}">
+    <input type="hidden" name="checkin" value="{{ reservation.check_in }}">
+    <input type="hidden" name="checkout" value="{{ reservation.check_out }}">
     <label for="firstname">First Name:</label>
-    <input type="text" name="firstname" id="firstname" required>
+    {{ form.first_name }}
     <br><br>
     <label for="lastname">Last Name:</label>
-    <input type="text" name="lastname" id="lastname" required>
+    {{ form.last_name }}
     <br><br>
     <label for="email">Email Address:</label>
-    <input type="email" name="email" id="email" required>
+    {{ form.email }}
     <br><br>
     <label for="address">Address:</label>
-    <input type="text" name="address" id="address" required>
+    {{ form.address }}
     <br><br>
     <label for="country">Country:</label>
-    <input type="text" name="country" id="country" required>
+    {{ form.country }}
     <br><br>
     <label for="zipcode">Zip Code:</label>
-    <input type="text" name="zipcode" id="zipcode" required>
+    {{ form.zip_code }}
     <br><br>
-    <input type="checkbox" name="terms" id="terms" required>
+    <input type="checkbox" name="agreement" id="agreement" required>
     <label for="terms">I agree to the <a href="{% url 'terms_and_conditions' %}">terms and conditions</a></label>
     <br><br>
     <p>Total price: ${{ reservation.price }}</p>

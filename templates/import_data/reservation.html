@@ -5,35 +5,16 @@
   <br>
   <br>
   <h3>Reservation</h3>
-  <form id="reservation-form">
+  <form id="ReservationForm" method ='POST'>
     {% csrf_token %}
-    <label for="rooms">Select a room:</label>
+    <label for="rooms">Selected room:</label>
     <label value="{{ room.id }}">{{ room.name }}</label>
     <br><br>
     <label for="price">Price per night:</label>
     <label value="{{ room.id }}">{{ room.price }}</label>
     <br><br>
-    <label for="checkin">Check-in date:</label>
-    <input type="date" name="checkin" id="checkin">
-    <br><br>
-    <label for="checkout">Check-out date:</label>
-    <input type="date" name="checkout" id="checkout">
-    <br><br>
-    <a href="#" class="btn btn-primary" onclick="validateForm()">Continue</a>
+    {{ form.as_p }}
+    <a href="#" class="btn btn-primary" type= "submit">Continue</a>
   </form>
-
-  <script>
-    function validateForm() {
-      var checkinDate = document.getElementById("checkin").value;
-      var checkoutDate = document.getElementById("checkout").value;
-      
-      if (checkinDate >= checkoutDate) {
-        alert("Check-out date must be later than check-in date");
-        return false;
-      } else {
-        document.getElementById("reservation-form").submit();
-      }
-    }
-  </script>
 
 {% endblock %}

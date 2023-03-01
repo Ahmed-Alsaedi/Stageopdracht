@@ -1,16 +1,18 @@
 from django import forms
-from .models import Reservation, User, Room, Hotel
+from .models import Reservation
 
-class Reservation:
-    check_in = forms.DateField()
-    check_out = forms.DateField()
+class ReservationForm(forms.ModelForm):
+    class Meta:
+        model = Reservation
+        fields = ['check_in', 'check_out']
+        widgets = {
+            'check_in': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'check_out': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        }
+    def clean(self):
+        cleaned_data = super().clean()
+        check_in = cleaned_data.get('check_in')
+        check_out = cleaned_data.get('check_out')
 
-
-class User:
-    firs_name = forms.CharField(label='firstname', max_length=100)
-    last_name = forms.CharField(label='lastname', max_length=100)
-    email = forms.EmailField(label='email', max_length=254)
-    address = forms.CharField(label= 'address', max_length=200)
-    country = forms.CharField(label='country', max_length=100)
-    zip_code = forms.CharField(label='zipcode', max_length=15)
-    agreement = forms.BooleanField(default=False)
+        if check_in and check_out and check_out <= check_in:
+            raise forms.ValidationError('Check-out date must be later than check-in date')
