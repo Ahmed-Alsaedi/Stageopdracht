@@ -7,6 +7,14 @@ from django.core.management import call_command
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import ReservationForm, UserForm
 
+
+def update(request):
+    """Updates cities and hotels, this is normally done via Command.py as cronjob.
+    Added it here to showcase it easily"""
+    if request.method == 'POST':
+        call_command('Command')
+    return redirect('/')
+
 def hotel_list(request):
     # Retrieve the selected city name from the query parameter
     selected_city_name = request.GET.get('city')

@@ -10,7 +10,7 @@ urlpatterns = [
     path('hotels/<int:hotel_id>/rooms/<int:room_id>/reservation/<int:reservation_id>/confirm/', views.confirm_reservation, name='confirm_reservation'),
     
     # path('get_hotels/', views.get_hotels, name='get_hotels'),
-    # path('update/', views.update, name='run_command'),
+    path('update/', views.update, name='run_command'),
     # path('rooms', views.rooms_view, name='rooms'),
 ]
 

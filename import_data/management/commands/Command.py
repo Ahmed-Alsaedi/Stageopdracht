@@ -40,22 +40,22 @@ class Command(BaseCommand):
         hotel_csv = hotel_response.content.decode() # Get the content of the CSV file
         reader = csv.reader(hotel_csv.splitlines(), delimiter=';') # split csv with ; delimiter
 
-        columns = ["cityCode", "hotelNr", "name" ] # the column names
+        columns = ["city_code", "hotel_number", "name" ] # the column names
         # Insert the data from the CSV into the table
         for row in reader:
             if len(row) == len(columns):
-                city = City.objects.get(cityCode=row[0])
+                city = City.objects.get(city_code=row[0])
                 hotel, created = Hotel.objects.update_or_create(
-                    hotelNr=row[1],
+                    hotel_number=row[1],
                     defaults={
                         "city": city,
-                        "cityCode": row[0],
+                        "city_code": row[0],
                         "name": row[2]
                     }
                 )
                 if created:
                     print(f"Record created with values {row}")
-                elif hotel.name != row[2] or hotel.cityCode != row[0]:
+                elif hotel.name != row[2] or hotel.city_code != row[0]:
                     print(f"Record updated with values {row}")
                 else:
                     print(f"Nothing changed")
@@ -68,12 +68,12 @@ class Command(BaseCommand):
         city_csv = city_response.content.decode() # Get the content of the CSV file
         reader = csv.reader(city_csv.splitlines(), delimiter=';') # split csv with ; delimiter
 
-        columns = ["cityCode", "name"] # the column names
+        columns = ["city_code", "name"] # the column names
         # Insert the data from the CSV into the table
         for row in reader:
             if len(row) == len(columns):
                 city, created = City.objects.update_or_create(
-                    cityCode=row[0],
+                    city_code=row[0],
                     defaults={
                         "name": row[1]
                     }

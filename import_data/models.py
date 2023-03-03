@@ -10,6 +10,7 @@ class City(models.Model):
 class Hotel(models.Model): 
     """foreign key to city. each hotel got 1 city """
     city = models.ForeignKey(City, on_delete=models.CASCADE)
+    city_code= models.CharField(max_length=255)
     hotel_number = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     description=models.TextField(default="")
