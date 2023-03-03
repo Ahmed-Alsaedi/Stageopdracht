@@ -1,18 +1,11 @@
 from audioop import reverse
 from django.shortcuts import render
 from .models import City, Hotel, Room, Reservation, User
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.core.management import call_command
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import ReservationForm
-
-# def update(request):
-#     """Updates cities and hotels, this is normally done via Command.py as cronjob.
-#     Added it here to showcase it easily"""
-#     if request.method == 'POST':
-#         call_command('Command')
-#     return redirect('/')
+from .forms import ReservationForm, UserForm
 
 def hotel_list(request):
     # Retrieve the selected city name from the query parameter
@@ -60,21 +53,34 @@ def reservation(request, room_id, hotel_id):
 
     if request.method == 'POST':
         form = ReservationForm(request.POST)
+
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.room = room
             reservation.save()
-            return redirect('confirm_reservation', reservation_id=reservation.id)
+            return redirect('confirm_reservation', room_id = room.id, hotel_id = hotel.id, reservation_id=reservation.id)
     else:
         form = ReservationForm()
-
+    
     context = {'room': room, 'hotel': hotel, 'form': form}
     return render(request, 'import_data/reservation.html', context)
 
-def confirm_reservation(request, user_id, room_id, hotel_id, reservation_id):
-    user = User.objects.get(id=user_id)
+def confirm_reservation(request, room_id, hotel_id, reservation_id):
     hotel = Hotel.objects.get(id=hotel_id)
     room = Room.objects.get(id=room_id)
     reservation= Reservation.objects.get(id=reservation_id)
-    context = {'room': room, 'hotel': hotel, 'reservation': reservation, 'user': user}
+    price = room.price
+    days = reservation.check_out - reservation.check_in
+    tdays = days.days
+    reservation.price = price * tdays
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.reservation = reservation
+            user.save()
+            # redirect or render a success page
+    else:
+        form = UserForm()
+    context = {'form': form, 'reservation': reservation, 'hotel':hotel, 'room': room}
     return render(request, 'import_data/confirm_reservation.html', context)

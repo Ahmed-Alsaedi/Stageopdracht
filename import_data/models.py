@@ -14,7 +14,8 @@ class Hotel(models.Model):
     name = models.CharField(max_length=255)
     description=models.TextField(default="")
     photo = models.ImageField(upload_to='import_data/hotel_photos/', default="Media/coming_soon.avif")
-
+    def __str__(self):
+        return self.name
 
 class Room(models.Model):
     name = models.CharField(max_length=255)
@@ -23,14 +24,11 @@ class Room(models.Model):
     description=models.TextField(default="")
     price = models.IntegerField(default=0)
     #availability = models.BooleanField(default=True)
-
-class Reservation(models.Model):
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    check_in = models.DateField()
-    check_out = models.DateField()
+    def __str__(self):
+        return self.name    
 
 class User(models.Model):
-    reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
+    
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
@@ -38,3 +36,10 @@ class User(models.Model):
     country = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=10)
     agreement = models.BooleanField(default=False)
+
+class Reservation(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    check_in = models.DateField()
+    check_out = models.DateField()
+

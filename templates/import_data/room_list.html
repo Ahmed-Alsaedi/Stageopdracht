@@ -25,8 +25,8 @@
             <img src="{{ room.photo }}" alt="{{ room.name }}" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">{{ room.name }}</h5>
-              <p class="card-text">{{ room.description }}</p>
-              <a href="{% url 'reservation' hotel_id=room.hotel.id room_id=room.id %}" class="btn btn-primary">Book now for ${{room.price}}</a>
+              <p class="card-text">{{ room.description }}</p><a href="{% url 'reservation' hotel_id=room.hotel.id room_id=room.id %}" class="btn btn-primary">Book now for ${{room.price}}</a>
+              
             </div>
           </div>
         </div>

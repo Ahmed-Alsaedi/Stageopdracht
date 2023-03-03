@@ -1,34 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Confirmation</h1>
+  <h1>Confirm you stay at {{hotel.name}}</h1>
   <form method="post">
     {% csrf_token %}
-    <input type="hidden" name="room" value="{{ reservation.id }}">
-    <input type="hidden" name="checkin" value="{{ reservation.check_in }}">
-    <input type="hidden" name="checkout" value="{{ reservation.check_out }}">
-    <label for="firstname">First Name:</label>
-    {{ form.first_name }}
     <br><br>
-    <label for="lastname">Last Name:</label>
-    {{ form.last_name }}
-    <br><br>
-    <label for="email">Email Address:</label>
-    {{ form.email }}
-    <br><br>
-    <label for="address">Address:</label>
-    {{ form.address }}
-    <br><br>
-    <label for="country">Country:</label>
-    {{ form.country }}
-    <br><br>
-    <label for="zipcode">Zip Code:</label>
-    {{ form.zip_code }}
-    <br><br>
-    <input type="checkbox" name="agreement" id="agreement" required>
-    <label for="terms">I agree to the <a href="{% url 'terms_and_conditions' %}">terms and conditions</a></label>
-    <br><br>
+    <label name="room" value="{{ room.name }}"> Room type: {{room.name}}</label>
+    <br>
+    <label value="{{ reservation.id }}">Reservation id: {{ reservation.id }}</label>
+    <br>
+    <label value="{{ reservation.check_in }}">Your stay is from {{ reservation.check_in }} until {{ reservation.check_out }}</label>
+    <br><br><br>
+    {{ form.as_p }}
     <p>Total price: ${{ reservation.price }}</p>
-    <input type="submit" value="Confirm Reservation">
+    <button href="#" class="btn btn-primary" type="submit">Confirm</button>
   </form>
 {% endblock %}
