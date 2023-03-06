@@ -88,16 +88,21 @@ def confirm_reservation(request, room_id, hotel_id, reservation_id):
             user.reservation = reservation
             user.save()
             # redirect or render a success page
-            return redirect('success', room_id = room.id, hotel_id = hotel.id, reservation_id=reservation.id, user_id = user.id)
+            context = {'room_id': room.id, 'hotel_id': hotel.id, 'reservation_id': reservation.id, 'user_id': user.id}
+            return success(request, context)
     else:
         form = UserForm()
     context = {'form': form, 'reservation': reservation, 'hotel':hotel, 'room': room}
     return render(request, 'import_data/confirm_reservation.html', context)
 
-def success(request, room_id, hotel_id, reservation_id, user_id):
+def success(request, context):
+    room_id = context['room_id']
+    hotel_id = context['hotel_id']
+    reservation_id = context['reservation_id']
+    user_id = context['user_id']
     hotel = Hotel.objects.get(id=hotel_id)
     room = Room.objects.get(id=room_id)
     reservation = Reservation.objects.get(id=reservation_id)
     user = User.objects.get(id=user_id)
     context = {'reservation': reservation, 'hotel':hotel, 'room': room, 'user':user}
-    return render(request, ' import_data/success.html', context)
+    return render(request, 'import_data/success.html', context)
