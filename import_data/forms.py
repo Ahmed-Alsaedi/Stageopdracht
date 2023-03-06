@@ -24,3 +24,8 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'address', 'country', 'zip_code', 'agreement']
+
+class SuccessForm(forms.Form):
+    class Meta:
+        model = User
+        fields = ['first_name', 'email']

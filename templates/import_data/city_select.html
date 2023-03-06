@@ -2,10 +2,6 @@
 
 {% block content %}
 <div class="container">
-    <form id="run_command" method="post" action="{% url 'run_command' %}">
-        {% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="Update">
-    </form>
     <form class="col-md-6" method="get" action="{% url 'hotel_list' %}">
         <label for="city-select">Select a city:</label>
         <select class="form-control" id="city-select" name="city">

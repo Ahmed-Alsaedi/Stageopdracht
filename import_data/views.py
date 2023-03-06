@@ -92,3 +92,11 @@ def confirm_reservation(request, room_id, hotel_id, reservation_id):
         form = UserForm()
     context = {'form': form, 'reservation': reservation, 'hotel':hotel, 'room': room}
     return render(request, 'import_data/confirm_reservation.html', context)
+
+def success(request, room_id, hotel_id, reservation_id, user_id):
+    hotel = Hotel.objects.get(id=hotel_id)
+    room = Room.objects.get(id=room_id)
+    reservation = Reservation.objects.get(id=reservation_id)
+    user = User.objects.get(id=user_id)
+    context = {'reservation': reservation, 'hotel':hotel, 'room': room, 'user':user}
+    return render(request, ' Success.html', context)

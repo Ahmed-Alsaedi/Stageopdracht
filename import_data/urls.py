@@ -8,6 +8,7 @@ urlpatterns = [
     path('hotels/<int:hotel_id>/rooms/', views.room_list, name='room_list'),
     path('hotels/<int:hotel_id>/rooms/<int:room_id>/reservation/', views.reservation, name='reservation'),
     path('hotels/<int:hotel_id>/rooms/<int:room_id>/reservation/<int:reservation_id>/confirm/', views.confirm_reservation, name='confirm_reservation'),
+    path('hotels/<int:hotel_id>/rooms/<int:room_id>/reservation/<int:reservation_id>/confirm/<int:user_id>/success/', views.success, name='success'),
     
     # path('get_hotels/', views.get_hotels, name='get_hotels'),
     path('update/', views.update, name='run_command'),
