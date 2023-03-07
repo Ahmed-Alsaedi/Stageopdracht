@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %}Reservation Confirmation{% endblock %}
-
 {% block content %}
 <div class="row justify-content-center">
   <div class="col-md-8">
@@ -9,10 +7,9 @@
       <div class="card-header">Reservation Confirmation</div>
 
       <div class="card-body">
-        <p>Congratulations {{user.first_name}}with your reservation {{reservation.id}}. We are very happy to welcome you in our hotel.</p>
+        <p>Congratulations {{user.first_name}} with your reservation {{reservation.id}}. We are very happy to welcome you in our hotel.</p>
         <p>Hotel: {{hotel.name}}</p>
         <p>Room: {{room.name}}</p>
-        <p>Price: {{room.price}}</p>
       </div>
     </div>
   </div>

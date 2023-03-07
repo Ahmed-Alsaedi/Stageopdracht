@@ -1,4 +1,5 @@
 from audioop import reverse
+from django.conf import settings
 from django.shortcuts import render
 from .models import City, Hotel, Room, Reservation, User
 from django.http import HttpResponse, JsonResponse
@@ -6,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.core.management import call_command
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import ReservationForm, UserForm
+from django.core.mail import send_mail
 
 
 def update(request):
@@ -65,7 +67,13 @@ def reservation(request, room_id, hotel_id):
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.room = room
-            reservation.save()
+            reservation.save()            
+            request.session['reservation'] = {
+                'room_id': room_id,
+                'hotel_id': hotel_id,
+                'reservation_id': reservation.id,
+            }
+            
             return redirect('confirm_reservation', room_id = room.id, hotel_id = hotel.id, reservation_id=reservation.id)
     else:
         form = ReservationForm()
@@ -74,19 +82,53 @@ def reservation(request, room_id, hotel_id):
     return render(request, 'import_data/reservation.html', context)
 
 def confirm_reservation(request, room_id, hotel_id, reservation_id):
-    hotel = Hotel.objects.get(id=hotel_id)
-    room = Room.objects.get(id=room_id)
-    reservation= Reservation.objects.get(id=reservation_id)
+    reservation_data = request.session.get('reservation', None)
+
+    if reservation_data is None:
+        return redirect('reservation')
+
+    hotel = Hotel.objects.get(id=reservation_data['hotel_id'])
+    room = Room.objects.get(id=reservation_data['room_id'])
+    reservation = Reservation.objects.get(id=reservation_data['reservation_id'])
     price = room.price
     days = reservation.check_out - reservation.check_in
     tdays = days.days
     reservation.price = price * tdays
+
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.reservation = reservation
             user.save()
+
+
+            del request.session['reservation']
+
+            '''
+            # Get the email addresses of the user
+            user_emails = [user.email]
+
+            # Send confirmation email to user
+            subject = 'Reservation Confirmation'
+            message = 'Thank you for your reservation. Your reservation details are as follows:'
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = user_emails
+            send_mail(subject, message, from_email, recipient_list)
+
+            #Get hotel mail address
+            hotel_emails = [hotel.email]
+
+            # Send confirmation email to hotel
+            subject = 'Reservation Confirmation'
+            message = 'yay new customer! Reservation details are as follows:' + reservation_id
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = hotel_emails
+            send_mail(subject, message, from_email, recipient_list)            
+            '''
+
+            
+
             # redirect or render a success page
             context = {'room_id': room.id, 'hotel_id': hotel.id, 'reservation_id': reservation.id, 'user_id': user.id}
             return success(request, context)

@@ -15,6 +15,7 @@ class Hotel(models.Model):
     name = models.CharField(max_length=255)
     description=models.TextField(default="")
     photo = models.ImageField(upload_to='import_data/hotel_photos/', default="Media/coming_soon.avif")
+    email = models.EmailField(max_length=255, default="receptionist@maykin.com")
     def __str__(self):
         return self.name
 
